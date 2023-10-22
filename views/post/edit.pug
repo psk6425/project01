@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1(class="title has-text-centered is-primary")= post ? "글 수정하기": "새 글 등록하기"
+  div(class="box mx-6")
+    form(action=post ? "/posts/"+post.shortId : "/posts", method="post")
+      div
+        label(class="label is-large") 제목
+        div(class="control")
+          input(class="input" type="text" name="title" value=post&&post.title)
+      div(class="mt-2")
+        label(class="label is-large") 내용
+        div(class="control")
+          textarea(class="input" name="content")= post&&post.content
+      div: input(class="button is-info mt-2" type="submit" value=post ? "수정":"등록")

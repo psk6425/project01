@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1(class="title has-text-centered is-primary")= post.title
+  div(class="box mt-4")
+    table(class="table is-fullwidth")
+      tbody
+        tr
+          th(colspan="3")= formatDate(post.createdAt)
+        tr
+          td(colspan="3")
+            pre= post.content
+    a(href="/posts"): button(class="button mr-2 is-2") 목록으로
+    a(href="?edit=true"): button(class="button is-info is-2 mr-2") 수정
+    button(class="button is-danger" onclick='deletePost()') 삭제
+  script(type="text/javascript").
+    function deletePost() {
+      fetch('/posts/#{post.shortId}', { method: 'delete' })
+        .then((res) => {
+          if (res.ok) {
+            alert('삭제되었습니다.');
+            window.location.href = '/posts';
+          } else {
+            alert('오류가 발생했습니다.');
+          }
+        })
+        .catch((err) => {
+          alert('오류가 발생했습니다.');
+        });
+    }
