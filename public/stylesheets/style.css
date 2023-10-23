@@ -1,0 +1,19 @@
+body {
+    padding: 10px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  /* Appendix: remove a tag and Use CSS Framework */
+  
+  div.columns {
+    margin-top: 80px;
+  }
+  
+  h1 {
+    width: 100%;
+    margin-top: 70px;
+  }
+  
+  div.columns {
+    margin-top: 20px;
+  }
